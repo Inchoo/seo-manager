@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">category_meta_rule_listing.category_meta_rule_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/edit"/>
+                <class>primary</class>
+                <label translate="true">Add New Meta Rule</label>
+            </button>
+        </buttons>
+        <spinner>category_meta_rule_columns</spinner>
+        <deps>
+            <dep>category_meta_rule_listing.category_meta_rule_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="category_meta_rule_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Inchoo_Seo::seo</aclResource>
+        <dataProvider class="Inchoo\Seo\Ui\DataProvider\Listing\CategoryRuleDataProvider" name="category_meta_rule_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="inchooseo/meta_rule_category/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+        <filters name="listing_filters"/>
+    </listingToolbar>
+    <columns name="category_meta_rule_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="category_id" sortOrder="20" class="Inchoo\Seo\Ui\Component\Listing\Column\Category">
+            <settings>
+                <options class="Inchoo\Seo\Model\Source\Category"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Category</label>
+            </settings>
+        </column>
+        <column name="store_id" sortOrder="30" class="Inchoo\Seo\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <options class="Inchoo\Seo\Ui\Component\Listing\Column\Store\Options"/>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <sortable>false</sortable>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <column name="attribute_ids" sortOrder="40" class="Inchoo\Seo\Ui\Component\Listing\Column\Attributes">
+            <settings>
+                <label translate="true">Attributes</label>
+                <options class="Inchoo\Seo\Model\Source\FilterableAttributes"/>
+                <dataType>select</dataType>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="100" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <label translate="true">Created</label>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="updated_at" sortOrder="110" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <label translate="true">Modified</label>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="status" sortOrder="150" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <label translate="true">Status</label>
+                <options class="Inchoo\Seo\Model\Source\Status"/>
+                <dataType>select</dataType>
+                <filter>select</filter>
+            </settings>
+        </column>
+        <actionsColumn name="actions" sortOrder="200" class="Inchoo\Seo\Ui\Component\Listing\Column\CategoryRuleActions">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

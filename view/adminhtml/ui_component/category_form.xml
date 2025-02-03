@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="search_engine_optimization">
+        <field name="meta_robots" formElement="select" sortOrder="200">
+            <settings>
+                <label translate="true">Meta Robots</label>
+                <scopeLabel>[STORE VIEW]</scopeLabel>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Inchoo\Seo\Model\Source\RobotsMetaTag"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="h1_title" formElement="input" sortOrder="210">
+            <settings>
+                <label translate="true">Page H1 Title</label>
+                <scopeLabel>[STORE VIEW]</scopeLabel>
+            </settings>
+        </field>
+    </fieldset>
+</form>

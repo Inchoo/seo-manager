@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Category\DataProvider">
+        <plugin name="inchoo_seo_use_default_value_checkbox"
+                type="Inchoo\Seo\Plugin\Category\Form\SetupUseDefaultValueCheckbox"/>
+    </type>
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="inchoo_seo_meta_robots" xsi:type="array">
+                    <item name="class" xsi:type="string">Inchoo\Seo\Ui\DataProvider\Form\Product\Modifier\MetaRobots</item>
+                    <item name="sortOrder" xsi:type="number">200</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

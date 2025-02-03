@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="search_engine_optimisation">
+        <field name="meta_robots" formElement="select">
+            <settings>
+                <label translate="true">Meta Robots</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Inchoo\Seo\Model\Source\RobotsMetaTag"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="canonical_url" formElement="input">
+            <settings>
+                <label translate="true">Canonical Url</label>
+                <notice translate="true">Absolute or relative URL can be used. If empty, the URL of the CMS page will be used.</notice>
+            </settings>
+        </field>
+    </fieldset>
+</form>

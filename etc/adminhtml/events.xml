@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="custom_meta_robots_save_after">
+        <observer name="flush_all_pagecache" instance="Magento\PageCache\Observer\InvalidateCache"/>
+    </event>
+    <event name="custom_canonical_save_after">
+        <observer name="flush_all_pagecache" instance="Magento\PageCache\Observer\InvalidateCache"/>
+    </event>
+</config>

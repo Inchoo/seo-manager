@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_render_before_catalog_category_view">
+        <observer name="inchoo_seo_canonical_prevnext" instance="Inchoo\Seo\Observer\Catalog\Category\CanonicalPrevNextObserver"/>
+    </event>
+    <event name="layout_render_before_catalogsearch_result_index">
+        <observer name="inchoo_seo_meta_robots" instance="Inchoo\Seo\Observer\CatalogSearch\MetaRobotsObserver"/>
+    </event>
+    <event name="layout_render_before_catalogsearch_advanced_result">
+        <observer name="inchoo_seo_meta_robots" instance="Inchoo\Seo\Observer\CatalogSearch\MetaRobotsObserver"/>
+    </event>
+
+    <event name="cms_page_render">
+        <observer name="inchoo_seo_page_registry" instance="Inchoo\Seo\Observer\Cms\Page\PageRegistryRenderObserver"/>
+    </event>
+    <!-- CMS Homepage -->
+    <event name="layout_render_before_cms_index_index">
+        <observer name="inchoo_seo" instance="Inchoo\Seo\Observer\Cms\Page\MetaRobotsCanonicalUrlObserver"/>
+    </event>
+    <!-- CMS Page -->
+    <event name="layout_render_before_cms_page_view">
+        <observer name="inchoo_seo" instance="Inchoo\Seo\Observer\Cms\Page\MetaRobotsCanonicalUrlObserver"/>
+    </event>
+</config>

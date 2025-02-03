@@ -1,0 +1,26 @@
+{
+    "name": "inchoo/module-seo-manager",
+    "description": "Inchoo Seo Manager",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": "~8.2.0||~8.3.0",
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Inchoo\\Seo\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Inchoo",
+            "email": "backend@inchoo.net",
+            "homepage": "https://inchoo.net/",
+            "role": "Developer"
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+{
+    "cms_page": {
+        "column": {
+            "canonical_url": true,
+            "meta_robots": true
+        }
+    },
+    "inchoo_seo_category_meta_rule": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "store_id": true,
+            "category_id": true,
+            "can_be_fallback": true,
+            "attribute_ids": true,
+            "attribute_options": true,
+            "allow_additional_attributes": true,
+            "add_to_sitemap": true,
+            "meta_title": true,
+            "meta_keywords": true,
+            "meta_description": true,
+            "meta_robots": true,
+            "canonical": true,
+            "canonical_use_attributes": true,
+            "h1_title": true,
+            "description": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INCHOO_SEO_CTGR_META_RULE_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID": true,
+            "INCHOO_SEO_CATEGORY_META_RULE_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "inchoo_seo_product_meta_rule": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "store_id": true,
+            "category_id": true,
+            "product_type_id": true,
+            "attribute_options": true,
+            "sort_order": true,
+            "meta_title": true,
+            "meta_keywords": true,
+            "meta_description": true,
+            "meta_robots": true,
+            "h1_title": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INCHOO_SEO_PRODUCT_META_RULE_STORE_ID_STORE_STORE_ID": true,
+            "INCHOO_SEO_PRD_META_RULE_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID": true
+        }
+    },
+    "inchoo_seo_custom_meta_robots": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "store_id": true,
+            "url_path": true,
+            "meta_robots": true,
+            "sort_order": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INCHOO_SEO_CUSTOM_META_ROBOTS_STORE_ID_URL_PATH": true,
+            "INCHOO_SEO_CUSTOM_META_ROBOTS_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "inchoo_seo_custom_canonical": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "store_id": true,
+            "request_path": true,
+            "target_path": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "INCHOO_SEO_CUSTOM_CANONICAL_STORE_ID_REQUEST_PATH": true,
+            "INCHOO_SEO_CUSTOM_CANONICAL_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Inchoo_Seo">
+        <sequence>
+            <module name="Magento_Catalog"/>
+            <module name="Magento_Cms"/>
+            <module name="Magento_Sitemap"/>
+        </sequence>
+    </module>
+</config>

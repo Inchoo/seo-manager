@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="group" type="modifierGroup" minOccurs="0" maxOccurs="unbounded">
+                    <xs:unique name="uniqueItemName">
+                        <xs:selector xpath="item"/>
+                        <xs:field xpath="@name"/>
+                    </xs:unique>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="uniqueGroupName">
+            <xs:selector xpath="group"/>
+            <xs:field xpath="@name"/>
+        </xs:unique>
+    </xs:element>
+    <xs:complexType name="modifierGroup">
+        <xs:sequence>
+            <xs:element name="item" type="modifierItem" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="modifierItem">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="instance" type="xs:string"/>
+        <xs:attribute name="sortOrder" type="xs:int"/>
+        <xs:attribute name="disabled" type="xs:boolean" default="false"/>
+    </xs:complexType>
+</xs:schema>
