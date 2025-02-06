@@ -51,7 +51,7 @@ class Url
         $result = [];
         foreach ($queryParams as $param => $value) {
             if (!$allowedParams || in_array($param, $allowedParams, true)) {
-                $result[$param] = is_array($value) ? $value : [$value];
+                $result[$param] = $value;
             }
         }
 

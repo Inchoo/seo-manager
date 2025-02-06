@@ -119,11 +119,14 @@ class MetaRules extends \Inchoo\Seo\Model\Modifier\AbstractModifier
 
         // merge/sort query params and create category canonical
         if ($filterQueryParams) {
-            $queryParams = array_map(static function ($paramValues) {
-                $paramValues = array_unique($paramValues);
-                sort($paramValues);
-                return $paramValues;
-            }, array_merge_recursive(...$filterQueryParams));
+            $queryParams = array_merge_recursive(...$filterQueryParams);
+            foreach ($queryParams as $param => $values) {
+                if (is_array($values)) {
+                    $values = array_unique($values);
+                    sort($values);
+                    $queryParams[$param] = $values;
+                }
+            }
 
             ksort($queryParams);
 
