@@ -6,8 +6,9 @@
  */
 
 define([
+    'ko',
     'Magento_Ui/js/form/element/single-checkbox'
-], function (Checkbox) {
+], function (ko, Checkbox) {
     'use strict';
 
     return Checkbox.extend({
@@ -23,7 +24,7 @@ define([
 
             this.disabled(!this.categoryId())
 
-            this.attributeRows.subscribe(function (categoryId) {
+            this.categoryId.subscribe(function (categoryId) {
                 this.disabled(!categoryId);
             }, this);
 
