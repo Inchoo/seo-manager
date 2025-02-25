@@ -173,20 +173,20 @@ class ProductRuleQueue
         $sortOrder = (int)$rule->getSortOrder(); // a lower number has higher priority
 
         $priority = match ($ruleMatchScore) {
-            16 + 4 + 1 => 10 - $categoryLevel, // category + product type + attribute match (store)
-            32 + 8 + 2 => 20 - $categoryLevel, // category + product type + attribute match (default store)
-            16 + 4 => 30 - $categoryLevel, // category + product type match (store)
-            32 + 8 => 40 - $categoryLevel, // category + product type match (default store)
-            16 + 1 => 50 - $categoryLevel, // category + attribute match (store)
-            32 + 2 => 60 - $categoryLevel, // category + attribute match (default store)
-            16 => 70 - $categoryLevel, // category match (store)
-            32 => 80 - $categoryLevel, // category match (default store)
-            4 + 1 => 90, // product type + attribute match (store)
-            8 + 2 => 100, // product type + attribute match (default store)
-            4 => 110, // product type match (store)
-            8 => 120, // product type match (default store)
-            1 => 130, // attribute match (store)
-            2 => 140, // attribute match (default store)
+            16 + 4 + 1 => 10 - $categoryLevel, // category + product type + attribute (store)
+            32 + 8 + 2 => 20 - $categoryLevel, // category + product type + attribute (default store)
+            16 + 4 => 30 - $categoryLevel, // category + product type (store)
+            32 + 8 => 40 - $categoryLevel, // category + product type (default store)
+            16 + 1 => 50 - $categoryLevel, // category + attribute (store)
+            32 + 2 => 60 - $categoryLevel, // category + attribute (default store)
+            16 => 70 - $categoryLevel, // category (store)
+            32 => 80 - $categoryLevel, // category (default store)
+            4 + 1 => 90, // product type + attribute (store)
+            8 + 2 => 100, // product type + attribute (default store)
+            4 => 110, // product type (store)
+            8 => 120, // product type (default store)
+            1 => 130, // attribute (store)
+            2 => 140, // attribute (default store)
             default => 1000
         };
 

@@ -19,9 +19,8 @@
                 <catalog_search_meta_robots/>
                 <category_meta_rules>0</category_meta_rules>
                 <category_meta_rules_sitemap>1</category_meta_rules_sitemap>
-                <product_meta_rules>0</product_meta_rules>
                 <excluded_attributes/>
-                <category_rel_prev_next>0</category_rel_prev_next>
+                <product_meta_rules>0</product_meta_rules>
             </inchoo_seo>
         </catalog>
         <sitemap>

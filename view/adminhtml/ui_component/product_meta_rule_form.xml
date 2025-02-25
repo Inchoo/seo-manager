@@ -65,7 +65,7 @@
                 </item>
             </argument>
             <settings>
-                <label translate="true">Status</label>
+                <label translate="true">Enabled</label>
                 <dataType>boolean</dataType>
             </settings>
             <formElements>
@@ -180,7 +180,7 @@
         <field name="sort_order" formElement="input" sortOrder="60">
             <settings>
                 <label translate="true">Priority</label>
-                <notice translate="true">Used to prioritize meta-rules at the same category level. A lower number has higher priority.</notice>
+                <notice translate="true">Used to prioritize meta rules with the same priority weight. A lower number indicates a higher priority.</notice>
                 <validation>
                     <rule name="integer" xsi:type="boolean">true</rule>
                     <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>

@@ -199,21 +199,6 @@ class Config
     }
 
     /**
-     * Product Meta Rules.
-     *
-     * @param int|string|null $scopeCode
-     * @return bool
-     */
-    public function isEnabledProductMetaRules(int|string $scopeCode = null): bool
-    {
-        return $this->isEnabled() && $this->scopeConfig->isSetFlag(
-            static::XML_PATH_IS_ENABLED_PRODUCT_META_RULES,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORES,
-            $scopeCode
-        );
-    }
-
-    /**
      * Excluded Attributes.
      *
      * @param int|string|null $scopeCode
@@ -234,5 +219,20 @@ class Config
         }
 
         return [];
+    }
+
+    /**
+     * Product Meta Rules.
+     *
+     * @param int|string|null $scopeCode
+     * @return bool
+     */
+    public function isEnabledProductMetaRules(int|string $scopeCode = null): bool
+    {
+        return $this->isEnabled() && $this->scopeConfig->isSetFlag(
+            static::XML_PATH_IS_ENABLED_PRODUCT_META_RULES,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORES,
+            $scopeCode
+        );
     }
 }

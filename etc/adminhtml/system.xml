@@ -29,7 +29,7 @@
                     <comment>Same as Magento 'Use Canonical Link Meta Tag For Products' config.</comment>
                 </field>
                 <field id="cms_page_canonical_tag" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Use Canonical Link Meta Tag For Cms Pages</label>
+                    <label>Use Canonical Link Meta Tag For CMS Pages</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="filter_canonical_link" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -60,15 +60,15 @@
                     <label>Category Meta Rules Sitemap</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
-                <field id="product_meta_rules" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Product Meta Rules</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="excluded_attributes" type="multiselect" translate="label comment" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="excluded_attributes" type="multiselect" translate="label comment" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Excluded Attributes</label>
                     <comment>Excluded attributes are ignored by meta-rules.</comment>
                     <source_model>Inchoo\Seo\Model\Source\FilterableAttributes</source_model>
                     <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="product_meta_rules" translate="label" type="select" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Product Meta Rules</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
             </group>
         </section>
