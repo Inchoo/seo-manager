@@ -12,10 +12,7 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
-                    <resource id="Inchoo_Seo::seo"
-                              title="Inchoo SEO Manager"
-                              translate="title"
-                              sortOrder="50"/>
+                    <resource id="Inchoo_Seo::seo" title="Inchoo SEO Manager" translate="title" sortOrder="50"/>
                 </resource>
             </resource>
         </resources>
