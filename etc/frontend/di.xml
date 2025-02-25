@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- START meta_modifiers.xml config -->
+    <preference for="Inchoo\Seo\Model\Modifier\ConfigInterface" type="Inchoo\Seo\Model\Modifier\Config"/>
+    <virtualType name="Inchoo\Seo\Model\Modifier\Config\VirtualReader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="converter" xsi:type="object">Inchoo\Seo\Model\Modifier\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Inchoo\Seo\Model\Modifier\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">meta_modifiers.xml</argument>
+            <argument name="idAttributes" xsi:type="array">
+                <item name="/config/group" xsi:type="string">name</item>
+                <item name="/config/group/item" xsi:type="string">name</item>
+            </argument>
+            <argument name="defaultScope" xsi:type="string">frontend</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Inchoo\Seo\Model\Modifier\Config\VirtualData" type="Magento\Framework\Config\Data">
+        <arguments>
+            <argument name="reader" xsi:type="object">Inchoo\Seo\Model\Modifier\Config\VirtualReader</argument>
+            <argument name="cacheId" xsi:type="string">seo_meta_modifiers</argument>
+        </arguments>
+    </virtualType>
+    <type name="Inchoo\Seo\Model\Modifier\Config">
+        <arguments>
+            <argument name="dataStorage" xsi:type="object">Inchoo\Seo\Model\Modifier\Config\VirtualData</argument>
+        </arguments>
+    </type>
+    <!-- END meta_modifiers.xml config -->
+
+    <!-- START Category modifier -->
+    <virtualType name="Inchoo\Seo\Model\Modifier\CategoryVirtual" type="Inchoo\Seo\Model\Modifier\Base">
+        <arguments>
+            <argument name="modifierGroup" xsi:type="string">category</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="categoryModifierPlaceholderFilter" type="Inchoo\Seo\Model\Filter\Placeholder">
+        <arguments>
+            <argument name="resolver" xsi:type="object">Inchoo\Seo\Model\Modifier\Filter\PlaceholderResolver\Category</argument>
+        </arguments>
+    </virtualType>
+    <type name="Inchoo\Seo\Plugin\Category\SeoModifierPlugin">
+        <arguments>
+            <argument name="categoryModifier" xsi:type="object">Inchoo\Seo\Model\Modifier\CategoryVirtual</argument>
+            <argument name="placeholderFilter" xsi:type="object">categoryModifierPlaceholderFilter</argument>
+        </arguments>
+    </type>
+    <!-- END Category modifier -->
+
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="inchoo_seo_modifier" type="Inchoo\Seo\Plugin\Category\SeoModifierPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- START Product modifier -->
+    <virtualType name="Inchoo\Seo\Model\Modifier\ProductVirtual" type="Inchoo\Seo\Model\Modifier\Base">
+        <arguments>
+            <argument name="modifierGroup" xsi:type="string">product</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="productModifierPlaceholderFilter" type="Inchoo\Seo\Model\Filter\Placeholder">
+        <arguments>
+            <argument name="resolver" xsi:type="object">Inchoo\Seo\Model\Modifier\Filter\PlaceholderResolver\Product</argument>
+        </arguments>
+    </virtualType>
+    <type name="Inchoo\Seo\Plugin\Product\SeoModifierPlugin">
+        <arguments>
+            <argument name="productModifier" xsi:type="object">Inchoo\Seo\Model\Modifier\ProductVirtual</argument>
+            <argument name="placeholderFilter" xsi:type="object">productModifierPlaceholderFilter</argument>
+        </arguments>
+    </type>
+    <!-- END Product modifier -->
+
+    <type name="Magento\Catalog\Controller\Product\View">
+        <plugin name="inchoo_seo_modifier" type="Inchoo\Seo\Plugin\Product\SeoModifierPlugin" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="inchoo_seo_canonical" type="Inchoo\Seo\Plugin\CanonicalPlugin"/>
+        <plugin name="inchoo_seo_meta_robots" type="Inchoo\Seo\Plugin\MetaRobotsPlugin"/>
+    </type>
+</config>

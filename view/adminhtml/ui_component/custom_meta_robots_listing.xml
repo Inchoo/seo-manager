@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">custom_meta_robots_listing.custom_meta_robots_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/edit"/>
+                <class>primary</class>
+                <label translate="true">Add New Meta Robots</label>
+            </button>
+        </buttons>
+        <spinner>custom_meta_robots_columns</spinner>
+        <deps>
+            <dep>custom_meta_robots_listing.custom_meta_robots_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="custom_meta_robots_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Inchoo_Seo::seo</aclResource>
+        <dataProvider class="Inchoo\Seo\Ui\DataProvider\Listing\CustomRobotsDataProvider" name="custom_meta_robots_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="inchooseo/meta_robots/massdelete"/>
+                    <type>delete</type>
+                    <label translate="true">Mass Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+        <filters name="listing_filters"/>
+    </listingToolbar>
+    <columns name="custom_meta_robots_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="store_id" sortOrder="20" class="Inchoo\Seo\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <options class="Inchoo\Seo\Ui\Component\Listing\Column\Store\Options"/>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <sortable>false</sortable>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <column name="url_path" sortOrder="30">
+            <settings>
+                <label translate="true">Url Path</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="meta_robots" sortOrder="40">
+            <settings>
+                <label translate="true">Meta Robots</label>
+                <options class="Inchoo\Seo\Model\Source\RobotsMetaTag"/>
+                <dataType>select</dataType>
+                <filter>select</filter>
+            </settings>
+        </column>
+        <column name="sort_order" sortOrder="50">
+            <settings>
+                <label translate="true">Priority</label>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="100" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <label translate="true">Created</label>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="updated_at" sortOrder="110" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <label translate="true">Modified</label>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="status" sortOrder="150" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <label translate="true">Status</label>
+                <options class="Inchoo\Seo\Model\Source\Status"/>
+                <dataType>select</dataType>
+                <filter>select</filter>
+            </settings>
+        </column>
+        <actionsColumn name="actions" sortOrder="200" class="Inchoo\Seo\Ui\Component\Listing\Column\CustomRobotsActions">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

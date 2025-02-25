@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Inchoo_Seo:etc/meta_modifiers.xsd">
+    <group name="category">
+        <item name="meta_rules" instance="Inchoo\Seo\Model\Modifier\Category\MetaRules" sortOrder="10"/>
+        <item name="attribute" instance="Inchoo\Seo\Model\Modifier\Category\Attribute" sortOrder="100"/>
+    </group>
+    <group name="product">
+        <item name="meta_rules" instance="Inchoo\Seo\Model\Modifier\Product\MetaRules" sortOrder="10"/>
+        <item name="attribute" instance="Inchoo\Seo\Model\Modifier\Product\Attribute" sortOrder="100"/>
+    </group>
+</config>

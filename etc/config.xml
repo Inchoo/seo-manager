@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <catalog>
+            <inchoo_seo>
+                <active>0</active>
+                <cms_page_canonical_tag>0</cms_page_canonical_tag>
+                <filter_canonical_link>0</filter_canonical_link>
+                <allowed_canonical_link_query_strings>p,product_list_order,product_list_dir,product_list_mode,product_list_limit</allowed_canonical_link_query_strings>
+                <non_default_toolbar_meta_robots/>
+                <catalog_search_meta_robots/>
+                <category_meta_rules>0</category_meta_rules>
+                <category_meta_rules_sitemap>1</category_meta_rules_sitemap>
+                <excluded_attributes/>
+                <product_meta_rules>0</product_meta_rules>
+            </inchoo_seo>
+        </catalog>
+        <sitemap>
+            <category_meta>
+                <priority>0.5</priority>
+                <changefreq>daily</changefreq>
+            </category_meta>
+        </sitemap>
+    </default>
+</config>

@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">category_meta_rule_form.category_meta_rule_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Category Meta Rule</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <label translate="true">Back</label>
+                <url path="*/*/index"/>
+                <class>back</class>
+            </button>
+            <button name="delete" class="Inchoo\Seo\Ui\Component\Control\DeleteButton"/>
+            <button name="reset">
+                <label translate="true">Reset</label>
+                <class>reset</class>
+            </button>
+            <button name="save_and_continue" class="Inchoo\Seo\Ui\Component\Control\SaveAndContinueButton"/>
+            <button name="save">
+                <label translate="true">Save</label>
+                <class>save primary</class>
+            </button>
+        </buttons>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>category_meta_rule_form.category_meta_rule_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="category_meta_rule_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Inchoo\Seo\Ui\DataProvider\Form\CategoryRuleDataProvider" name="category_meta_rule_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label/>
+        </settings>
+        <field name="status" formElement="checkbox" sortOrder="5">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Enabled</label>
+                <dataType>boolean</dataType>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="store_id" formElement="select" sortOrder="10" class="Magento\Store\Ui\Component\Form\Field\StoreView">
+            <settings>
+                <label translate="true">Store View</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Inchoo\Seo\Ui\Component\Listing\Column\Store\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="category_id" formElement="select" sortOrder="20">
+            <settings>
+                <label translate="true">Category</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <caption translate="true">-- Please Select --</caption>
+                        <options class="Inchoo\Seo\Model\Source\Category"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="can_be_fallback" formElement="checkbox" component="Inchoo_Seo/js/form/element/checkbox/can-be-fallback" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Can Be A Fallback</label>
+                <dataType>boolean</dataType>
+                <notice translate="true">Can a category rule serve as a fallback for child categories.</notice>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <dynamicRows name="attribute_rows" sortOrder="40">
+            <settings>
+                <label translate="true">Attributes</label>
+                <addButtonLabel translate="true">Add Attribute</addButtonLabel>
+                <componentType>dynamicRows</componentType>
+                <dndConfig>
+                    <param name="enabled" xsi:type="boolean">false</param>
+                </dndConfig>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="attribute" formElement="select" sortOrder="10">
+                    <settings>
+                        <label translate="true">Attribute</label>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <caption translate="true">-- Please Select --</caption>
+                                <options class="Inchoo\Seo\Model\Source\FilterableAttributes"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="option" formElement="select" component="Inchoo_Seo/js/form/element/select/attribute-option" sortOrder="20">
+                    <settings>
+                        <label translate="true">Option</label>
+                        <deps>
+                            <dep>category_meta_rule_form.category_meta_rule_form_data_source</dep>
+                        </deps>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <caption translate="true">-- Please Select --</caption>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <actionDelete>
+                    <settings>
+                        <componentType>actionDelete</componentType>
+                    </settings>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+        <field name="allow_additional_attributes" formElement="checkbox" component="Inchoo_Seo/js/form/element/checkbox/allow-additional-attributes" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Allow Additional Attributes</label>
+                <dataType>boolean</dataType>
+                <notice translate="true">Allow a rule to be matched even if additional, non-excluded attributes are used in the layered filter.</notice>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="add_to_sitemap" formElement="checkbox" component="Inchoo_Seo/js/form/element/checkbox/add-to-sitemap" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Add To Sitemap</label>
+                <dataType>boolean</dataType>
+                <notice translate="true">Only rules with a selected category and a single attribute filter can be added to the sitemap.</notice>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="meta_data" sortOrder="20">
+        <settings>
+            <label translate="true">Meta Data</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="meta_title" formElement="input" sortOrder="10">
+            <settings>
+                <label translate="true">Meta Title</label>
+                <notice translate="true">
+                    <![CDATA[
+                        EXAMPLE: "New {color} shirts [at {store_view}]".
+                        VARIABLES:
+                        Website - {website},
+                        Store - {store},
+                        Store View - {store_view},
+                        Category - {category}|{name},
+                        Attribute - {attribute_code}
+                    ]]>
+                </notice>
+            </settings>
+        </field>
+        <field name="meta_description" formElement="textarea" sortOrder="20">
+            <settings>
+                <label translate="true">Meta Description</label>
+                <notice translate="true">
+                    <![CDATA[
+                        EXAMPLE: "New {color} shirts [at {store_view}]".
+                        VARIABLES:
+                        Website - {website},
+                        Store - {store},
+                        Store View - {store_view},
+                        Category - {category}|{name},
+                        Attribute - {attribute_code}
+                    ]]>
+                </notice>
+            </settings>
+        </field>
+        <field name="meta_keywords" formElement="textarea" sortOrder="30">
+            <settings>
+                <label translate="true">Meta Keywords</label>
+                <notice translate="true">
+                    <![CDATA[
+                        EXAMPLE: "New {color} shirts [at {store_view}]".
+                        VARIABLES:
+                        Website - {website},
+                        Store - {store},
+                        Store View - {store_view},
+                        Category - {category}|{name},
+                        Attribute - {attribute_code}
+                    ]]>
+                </notice>
+            </settings>
+        </field>
+        <field name="canonical" formElement="input" sortOrder="40">
+            <settings>
+                <label translate="true">Canonical URL</label>
+                <notice translate="true">A canonical URL can be entered without the base URL. If the URL contains query parameters, they will be allowed in the canonical URL.</notice>
+            </settings>
+        </field>
+        <field name="canonical_use_attributes" formElement="checkbox" component="Inchoo_Seo/js/form/element/checkbox/canonical-use-attributes" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Use Rule Attributes in the Canonical URL</label>
+                <dataType>boolean</dataType>
+                <notice translate="true">Create a canonical URL using rule attributes. This works only if a custom "Canonical URL" is not set.</notice>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="meta_robots" formElement="select" sortOrder="60">
+            <settings>
+                <label translate="true">Meta Robots</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Inchoo\Seo\Model\Source\RobotsMetaTag"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="h1_title" formElement="input" sortOrder="100">
+            <settings>
+                <label translate="true">Page H1 Title</label>
+                <notice translate="true">
+                    <![CDATA[
+                        EXAMPLE: "New {color} shirts [at {store_view}]".
+                        VARIABLES:
+                        Website - {website},
+                        Store - {store},
+                        Store View - {store_view},
+                        Category - {category}|{name},
+                        Attribute - {attribute_code}
+                    ]]>
+                </notice>
+            </settings>
+        </field>
+        <field name="description" formElement="textarea" sortOrder="110">
+            <settings>
+                <label translate="true">Description</label>
+                <notice translate="true">
+                    <![CDATA[
+                        EXAMPLE: "New {color} shirts [at {store_view}]".
+                        VARIABLES:
+                        Website - {website},
+                        Store - {store},
+                        Store View - {store_view},
+                        Category - {category}|{name},
+                        Attribute - {attribute_code}
+                    ]]>
+                </notice>
+            </settings>
+        </field>
+    </fieldset>
+</form>

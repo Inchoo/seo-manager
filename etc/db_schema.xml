@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cms_page">
+        <column xsi:type="varchar" name="canonical_url" length="255" nullable="true" comment="Canonical Url"/>
+        <column xsi:type="varchar" name="meta_robots" length="100" nullable="true" comment="Robots Meta Tag"/>
+    </table>
+    <table name="inchoo_seo_category_meta_rule" resource="default" engine="innodb" comment="Category Meta Rule">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="boolean" name="status" nullable="false" default="0" comment="Status"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0" comment="Store Id"/>
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="true" comment="Category Id"/>
+        <column xsi:type="boolean" name="can_be_fallback" nullable="false" default="0" comment="Can Be Fallback"/>
+        <column xsi:type="varchar" name="attribute_ids" length="255" nullable="true" comment="Attribute Ids"/>
+        <column xsi:type="json" name="attribute_options" nullable="true" comment="Attribute Options"/>
+        <column xsi:type="boolean" name="allow_additional_attributes" nullable="false" default="0" comment="Allow Additional Attributes"/>
+        <column xsi:type="boolean" name="add_to_sitemap" nullable="false" default="0" comment="Add To Sitemap"/>
+        <column xsi:type="varchar" name="meta_title" length="255" nullable="true" comment="Meta Title"/>
+        <column xsi:type="text" name="meta_keywords" nullable="true" comment="Meta Keywords"/>
+        <column xsi:type="text" name="meta_description" nullable="true" comment="Meta Description"/>
+        <column xsi:type="varchar" name="meta_robots" length="100" nullable="true" comment="Robots Meta Tag"/>
+        <column xsi:type="varchar" name="canonical" length="255" nullable="true" comment="Canonical URL"/>
+        <column xsi:type="boolean" name="canonical_use_attributes" nullable="false" default="0" comment="Use Rule Attributes in the Canonical URL"/>
+        <column xsi:type="varchar" name="h1_title" length="255" nullable="true" comment="Page H1 Title"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Description"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="INCHOO_SEO_CTGR_META_RULE_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID"
+                    column="category_id" table="inchoo_seo_category_meta_rule"
+                    referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="INCHOO_SEO_CATEGORY_META_RULE_STORE_ID_STORE_STORE_ID"
+                    column="store_id" table="inchoo_seo_category_meta_rule"
+                    referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    </table>
+    <table name="inchoo_seo_product_meta_rule" resource="default" engine="innodb" comment="Product Meta Rule">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="tinyint" name="status" unsigned="true" nullable="false" default="0" comment="Status"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0" comment="Store Id"/>
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="true" comment="Category Id"/>
+        <column xsi:type="varchar" name="product_type_id" length="32" nullable="true" comment="Product Type"/>
+        <column xsi:type="json" name="attribute_options" nullable="true" comment="Attribute Options"/>
+        <column xsi:type="int" name="sort_order" padding="10" nullable="false" default="0" comment="Sort Order"/>
+        <column xsi:type="varchar" name="meta_title" length="255" nullable="true" comment="Meta Title"/>
+        <column xsi:type="text" name="meta_keywords" nullable="true" comment="Meta Keywords"/>
+        <column xsi:type="text" name="meta_description" nullable="true" comment="Meta Description"/>
+        <column xsi:type="varchar" name="meta_robots" length="100" nullable="true" comment="Robots Meta Tag"/>
+        <column xsi:type="varchar" name="h1_title" length="255" nullable="true" comment="Page H1 Title"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="INCHOO_SEO_PRODUCT_META_RULE_STORE_ID_STORE_STORE_ID"
+                    column="store_id" table="inchoo_seo_product_meta_rule"
+                    referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="INCHOO_SEO_PRD_META_RULE_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID"
+                    column="category_id" table="inchoo_seo_product_meta_rule"
+                    referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+    <table name="inchoo_seo_custom_meta_robots" resource="default" engine="innodb" comment="Custom Meta Robots">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="boolean" name="status" nullable="false" default="0" comment="Status"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0" comment="Store Id"/>
+        <column xsi:type="varchar" name="url_path" length="255" nullable="false" comment="Url Path"/>
+        <column xsi:type="varchar" name="meta_robots" length="100" nullable="false" comment="Robots Meta Tag"/>
+        <column xsi:type="int" name="sort_order" padding="10" nullable="false" default="0" comment="Sort Order"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="INCHOO_SEO_CUSTOM_META_ROBOTS_STORE_ID_URL_PATH">
+            <column name="store_id"/>
+            <column name="url_path"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="INCHOO_SEO_CUSTOM_META_ROBOTS_STORE_ID_STORE_STORE_ID"
+                    column="store_id" table="inchoo_seo_custom_meta_robots"
+                    referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    </table>
+    <table name="inchoo_seo_custom_canonical" resource="default" engine="innodb" comment="Custom Canonical">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="boolean" name="status" nullable="false" default="0" comment="Status"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0" comment="Store Id"/>
+        <column xsi:type="varchar" name="request_path" length="255" nullable="false" comment="Request Path"/>
+        <column xsi:type="varchar" name="target_path" length="255" nullable="false" comment="Target Path"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="INCHOO_SEO_CUSTOM_CANONICAL_STORE_ID_REQUEST_PATH">
+            <column name="store_id"/>
+            <column name="request_path"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="INCHOO_SEO_CUSTOM_CANONICAL_STORE_ID_STORE_STORE_ID"
+                    column="store_id" table="inchoo_seo_custom_canonical"
+                    referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    </table>
+</schema>

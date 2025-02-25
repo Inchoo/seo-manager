@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Inchoo d.o.o. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @author Inchoo (https://inchoo.net)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Inchoo_Seo::seo" title="Inchoo SEO Manager" translate="title" module="Inchoo_Seo" sortOrder="100" parent="Magento_Backend::marketing" resource="Inchoo_Seo::seo"/>
+        <add id="Inchoo_Seo::category_meta_rule" title="Category Meta Rules" translate="title" module="Inchoo_Seo" sortOrder="10" parent="Inchoo_Seo::seo" action="inchooseo/meta_rule_category/index" resource="Inchoo_Seo::seo"/>
+        <add id="Inchoo_Seo::product_meta_rule" title="Product Meta Rules" translate="title" module="Inchoo_Seo" sortOrder="20" parent="Inchoo_Seo::seo" action="inchooseo/meta_rule_product/index" resource="Inchoo_Seo::seo"/>
+        <add id="Inchoo_Seo::custom_meta_robots" title="Custom Meta Robots" translate="title" module="Inchoo_Seo" sortOrder="30" action="inchooseo/meta_robots/index" parent="Inchoo_Seo::seo" resource="Inchoo_Seo::seo"/>
+        <add id="Inchoo_Seo::custom_canonical" title="Custom Canonicals" translate="title" module="Inchoo_Seo" sortOrder="40" action="inchooseo/canonical/index" parent="Inchoo_Seo::seo" resource="Inchoo_Seo::seo"/>
+    </menu>
+</config>
