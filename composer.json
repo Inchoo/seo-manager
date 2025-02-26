@@ -2,6 +2,9 @@
     "name": "inchoo/seo-manager",
     "description": "Inchoo Seo Manager",
     "type": "magento2-module",
+    "license": [
+        "OSL-3.0"
+    ],
     "version": "1.0.0",
     "require": {
         "php": "~8.2.0||~8.3.0",
