@@ -17,7 +17,7 @@ php bin/magento setup:di:compile
 # Deploy static view files
 php bin/magento setup:static-content:deploy
 
-# Flushe cache storage
+# Flush cache storage
 php bin/magento cache:flush
 ```
 
