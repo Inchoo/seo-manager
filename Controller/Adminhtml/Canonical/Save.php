@@ -75,8 +75,6 @@ class Save extends \Magento\Backend\App\Action implements \Magento\Framework\App
      */
     protected function validateRequest(\Magento\Framework\App\RequestInterface $request): bool
     {
-        return $request->getParam('store_id') !== null
-            && $request->getParam('request_path')
-            && $request->getParam('target_path');
+        return $request->getParam('request_path') && $request->getParam('target_path');
     }
 }
