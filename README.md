@@ -3,6 +3,8 @@
 ## Overview
 The Inchoo SEO Manager is a powerful Magento 2 extension that incorporates a wide range of SEO tools designed to enhance your website’s search engine optimization. It provides various features to optimize your store, making it easier to improve rankings and visibility in search results.
 
+Learn more at: https://inchoo.net/online-marketing/introducing-inchoo-seo-manager/
+
 ## Installation
 ```sh
 # Install composer package
