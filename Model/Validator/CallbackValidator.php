@@ -28,7 +28,7 @@ class CallbackValidator extends \Magento\Framework\Validator\AbstractValidator
      */
     public function __construct(
         callable $callback,
-        string $errorMessage = null
+        ?string $errorMessage = null
     ) {
         $this->callback = $callback;
         $this->errorMessage = $errorMessage;

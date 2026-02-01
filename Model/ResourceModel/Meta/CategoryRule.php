@@ -22,7 +22,7 @@ class CategoryRule extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         protected \Inchoo\Seo\Helper\Data $dataHelper,
         protected \Magento\Framework\ValidatorFactory $validatorFactory,
         \Magento\Framework\Model\ResourceModel\Db\Context $context,
-        string $connectionName = null
+        ?string $connectionName = null
     ) {
         parent::__construct($context, $connectionName);
     }

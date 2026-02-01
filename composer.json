@@ -5,9 +5,9 @@
     "license": [
         "OSL-3.0"
     ],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "require": {
-        "php": "~8.2.0||~8.3.0",
+        "php": "~8.2.0||~8.3.0||~8.4.0",
         "magento/framework": "*"
     },
     "autoload": {

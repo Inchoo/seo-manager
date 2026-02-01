@@ -146,7 +146,7 @@ class SeoConfig
      * @param string|null $param2
      * @return self
      */
-    public function setMetaRobotsByParameters(string $param1 = null, string $param2 = null): self
+    public function setMetaRobotsByParameters(?string $param1 = null, ?string $param2 = null): self
     {
         try {
             $currentParameters = explode(',', (string)$this->pageConfig->getRobots());

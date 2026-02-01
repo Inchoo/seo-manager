@@ -37,7 +37,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function isEnabled(int|string $scopeCode = null): bool
+    public function isEnabled(int|string|null $scopeCode = null): bool
     {
         return $this->scopeConfig->isSetFlag(
             static::XML_PATH_IS_ENABLED,
@@ -52,7 +52,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function useCanonicalLinkMetaTagForCategories(int|string $scopeCode = null): bool
+    public function useCanonicalLinkMetaTagForCategories(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabled() && $this->scopeConfig->isSetFlag(
             \Magento\Catalog\Helper\Category::XML_PATH_USE_CATEGORY_CANONICAL_TAG,
@@ -67,7 +67,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function useCanonicalLinkMetaTagForProducts(int|string $scopeCode = null): bool
+    public function useCanonicalLinkMetaTagForProducts(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabled() && $this->scopeConfig->isSetFlag(
             \Magento\Catalog\Helper\Product::XML_PATH_USE_PRODUCT_CANONICAL_TAG,
@@ -82,7 +82,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function useCanonicalLinkMetaTagForCmsPages(int|string $scopeCode = null): bool
+    public function useCanonicalLinkMetaTagForCmsPages(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabled() && $this->scopeConfig->isSetFlag(
             static::XML_PATH_IS_ENABLED_CMS_PAGE_CANONICAL_TAG,
@@ -97,7 +97,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return string
      */
-    public function getCmsHomePageIdentifier(int|string $scopeCode = null): string
+    public function getCmsHomePageIdentifier(int|string|null $scopeCode = null): string
     {
         return (string)$this->scopeConfig->getValue(
             \Magento\Cms\Helper\Page::XML_PATH_HOME_PAGE,
@@ -112,7 +112,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function isEnabledCanonicalLinkFilter(int|string $scopeCode = null): bool
+    public function isEnabledCanonicalLinkFilter(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabled() && $this->scopeConfig->isSetFlag(
             static::XML_PATH_IS_ENABLED_FILTER_CANONICAL_LINK,
@@ -127,7 +127,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return array
      */
-    public function getAllowedCanonicalQueryStrings(int|string $scopeCode = null): array
+    public function getAllowedCanonicalQueryStrings(int|string|null $scopeCode = null): array
     {
         $value = $this->scopeConfig->getValue(
             static::XML_PATH_ALLOWED_CANONICAL_LINK_QUERY_STRINGS,
@@ -144,7 +144,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return string
      */
-    public function getCatalogSearchMetaRobots(int|string $scopeCode = null): string
+    public function getCatalogSearchMetaRobots(int|string|null $scopeCode = null): string
     {
         return (string)$this->scopeConfig->getValue(
             static::XML_PATH_CATALOG_SEARCH_META_ROBOTS,
@@ -159,7 +159,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return string
      */
-    public function getNonDefaultToolbarMetaRobots(int|string $scopeCode = null): string
+    public function getNonDefaultToolbarMetaRobots(int|string|null $scopeCode = null): string
     {
         return (string)$this->scopeConfig->getValue(
             static::XML_PATH_NON_DEFAULT_TOOLBAR_META_ROBOTS,
@@ -174,7 +174,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function isEnabledCategoryMetaRules(int|string $scopeCode = null): bool
+    public function isEnabledCategoryMetaRules(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabled() && $this->scopeConfig->isSetFlag(
             static::XML_PATH_IS_ENABLED_CATEGORY_META_RULES,
@@ -189,7 +189,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function isEnabledCategoryMetaRulesSitemap(int|string $scopeCode = null): bool
+    public function isEnabledCategoryMetaRulesSitemap(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabledCategoryMetaRules() && $this->scopeConfig->isSetFlag(
             static::XML_PATH_IS_ENABLED_CATEGORY_META_RULES_SITEMAP,
@@ -204,7 +204,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return int[]
      */
-    public function getExcludedAttributeIds(int|string $scopeCode = null): array
+    public function getExcludedAttributeIds(int|string|null $scopeCode = null): array
     {
         $value = $this->scopeConfig->getValue(
             static::XML_PATH_EXCLUDED_ATTRIBUTES,
@@ -227,7 +227,7 @@ class Config
      * @param int|string|null $scopeCode
      * @return bool
      */
-    public function isEnabledProductMetaRules(int|string $scopeCode = null): bool
+    public function isEnabledProductMetaRules(int|string|null $scopeCode = null): bool
     {
         return $this->isEnabled() && $this->scopeConfig->isSetFlag(
             static::XML_PATH_IS_ENABLED_PRODUCT_META_RULES,
